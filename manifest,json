@@ -9,7 +9,7 @@
 		{
 			"matches": [ "https://vk.com/*" ],
 			"css": ["mystyles.css"],
-			"js": [ "jquery.js", "background.js" ],
+			"js": [ "background.js" ],
 			"run_at": "document_end"
 		}
 	],
