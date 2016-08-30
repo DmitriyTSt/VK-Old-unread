@@ -1,0 +1,18 @@
+.nim-dialog.nim-dialog_unread-out:not(.nim-dialog_failed) .nim-dialog--text-preview {
+	background: #edf0f5 !important;
+}
+.nim-dialog.nim-dialog_unread-out:not(.nim-dialog_failed) .nim-dialog--unread {
+	display: none !important;
+}
+/* новый вид сообщений */
+.nim-dialog_selected.nim-dialog.nim-dialog_unread-out:not(.nim-dialog_failed) .nim-dialog--text-preview {
+	background: #8ea8c4 !important;
+}
+.nim-dialog.nim-dialog_unread   {
+	background: #edf0f5 !important;
+}
+/* удаление рекламы */
+#ads_left {
+	position: absolute !important;
+	left: -5000px !important;
+}
