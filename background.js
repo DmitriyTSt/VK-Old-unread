@@ -7,7 +7,7 @@ swapBackgroundButton.setAttribute("id", "top_swapbg_link");
 swapBackgroundButton.setAttribute("onclick", "swapBg()");
 swapBackgroundButton.innerHTML = 'Сменить фон';
 swapBackgroundButton.setAttribute("wotsearchprocessed", "true");
-topMenu.insertBefore(swapBackgroundButton,settingLink);
+topMenu.insertBefore(swapBackgroundButton, settingLink);
 
 // кнопка сменить логотип
 var topMenu = document.getElementById("top_profile_menu");
@@ -18,7 +18,18 @@ swapBackgroundButton.setAttribute("id", "top_swaplogo_link");
 swapBackgroundButton.setAttribute("onclick", "swapLogo()");
 swapBackgroundButton.innerHTML = 'Сменить логотип';
 swapBackgroundButton.setAttribute("wotsearchprocessed", "true");
-topMenu.insertBefore(swapBackgroundButton,settingLink);
+topMenu.insertBefore(swapBackgroundButton, settingLink);
+
+// кнопка НАСТРОЙКИ
+var topMenu = document.getElementById("top_profile_menu");
+var settingLink = document.getElementById("top_settings_link");
+var swapBackgroundButton = document.createElement("a");
+swapBackgroundButton.setAttribute("class", "top_profile_mrow");
+swapBackgroundButton.setAttribute("id", "top_vkou_link");
+swapBackgroundButton.setAttribute("onclick", "showSettings()");
+swapBackgroundButton.innerHTML = 'Настройки VKOU';
+swapBackgroundButton.setAttribute("wotsearchprocessed", "true");
+topMenu.insertBefore(swapBackgroundButton, settingLink);
 
 // определяем переменные
 localStorage["newbg_css"] = chrome.extension.getURL('/newbg.css');
