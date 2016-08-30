@@ -1,7 +1,20 @@
+var title = "VK Old-unread";
+var v = "1.1.0.3";
+
 var vkou = {
     options: {
         oldbg: false,
         oldlogo: false
+    },
+    showOpt: function () {
+        var box = new MessageBox({title: title + " " + v, width: 660, hideButtons: true});
+        var html = "";
+        var curopt;
+        for (curopt in this.options) {
+            html +=buildCheckbox(curopt,this.options[curopt]);
+        }
+        box.content(html);
+        box.show();
     },
     save: function () {
         localStorage['vkou'] = JSON.stringify(this.options);
@@ -12,7 +25,6 @@ var vkou = {
         console.log("vkou options loaded");
     },
     run: function () {
-        // фон
         if (vkou.options.oldbg) {
             addcss_file(localStorage['oldbg_css'], "vk_ou_bg");
         }
@@ -41,8 +53,27 @@ var vkou = {
         }
         else delcss("old_logo");
         console.log("vkou updated");
+    },
+    setOpt: function (id, state) {
+        console.log(id + " is " + state);
+        this.options[id] = state;
+        vkou.save();
+        vkou.update();
+    },
+    reset: function () {
+        
     }
 };
+
+function buildCheckbox(id, state) {
+    var code = '<div class="checkbox {on}" id="vkou_opt_{id}" style="padding: 5px;" onclick="checkbox(this); vkou.setOpt(\'{id}\', isChecked(this));"><div class="vk_checkbox_caption">{id}</div></div>\
+    ';
+    var onState = '';
+    if (state) onState += 'on';
+    console.log(id + " state = " + onState);
+    code = code.replace(new RegExp("{on}",'g'), onState);
+    return code.replace(new RegExp("{id}",'g'), id);
+}
 
 function addcss(text,id) {
     var style = document.createElement("style");
@@ -68,6 +99,7 @@ function delcss_file(id) {
     document.getElementsByTagName("head")[0].removeChild(document.getElementById(id));
 }
 function delcss(id) {
+    if (document.getElementById(id) === null) return;
     document.getElementsByTagName("head")[0].removeChild(document.getElementById(id));
 }
 
@@ -84,4 +116,7 @@ function swapLogo() {
     vkou.options.oldlogo = !vkou.options.oldlogo;
     vkou.save();
     vkou.update();
+}
+function showSettings() {
+    vkou.showOpt();
 }
