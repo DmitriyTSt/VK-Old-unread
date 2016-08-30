@@ -1,0 +1,18 @@
+body {
+    background: #edeef0 !important;
+}
+.im-page.im-page_classic .im-page--header-chat {
+    border-top: solid 17px #edeef0 !important;
+    border-left: solid 1px #edeef0 !important;
+    border-right: solid 1px #edeef0 !important;
+}
+.im-page.im-page_classic .im-page--chat-input {
+    border-bottom: solid 15px #edeef0 !important;
+    border-left: solid 1px #edeef0 !important;
+    border-right: solid 2px #edeef0 !important;
+}
+.im-page.im-page_classic .im-page--header {
+    border-top: solid 15px #edeef0 !important;
+    border-left: solid 1px #edeef0 !important;
+    border-right: solid 1px #edeef0 !important;
+}
