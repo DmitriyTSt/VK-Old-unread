@@ -1,4 +1,4 @@
-.nim-dialog.nim-dialog_unread-out:not(.nim-dialog_failed) .nim-dialog--text-preview {
+﻿.nim-dialog.nim-dialog_unread-out:not(.nim-dialog_failed) .nim-dialog--text-preview {
 	background: #edf0f5 !important;
 }
 .nim-dialog.nim-dialog_unread-out:not(.nim-dialog_failed) .nim-dialog--unread {
@@ -11,8 +11,7 @@
 .nim-dialog.nim-dialog_unread   {
 	background: #edf0f5 !important;
 }
-/* удаление рекламы */
-#ads_left {
-	position: absolute !important;
-	left: -5000px !important;
+/* кнопка ответы */
+#side_bar #l_ans .left_icon {
+    background-position: 7px -469px;
 }
