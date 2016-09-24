@@ -32,6 +32,12 @@ var vkou = {
         this.options = JSON.parse(localStorage.vkou);
         console.log("vkou options loaded");
     },
+    loadPlusNew: function() {
+        var oldOpt = JSON.parse(localStorage.vkou);
+        for (var key in this.options) {
+            this.options[key] = oldOpt[key];
+        }
+    },
     run: function () {
         if (vkou.options.oldbg) {
             addcss_file(localStorage['oldbg_css'], "vk_ou_bg");
@@ -156,10 +162,12 @@ function erase_button_ans(){
 
 function onLoadVKnew() {
     //vkou.save();
-	if (localStorage.isNewV) {
-		//vkou.load();
+	/*if (localStorage.isNewV) {
+        
+		vkou.loadPlusNew();
 		//vkou.save();
-	}
-    vkou.load();
+        localStorage['isNewV'] = false;
+	}*/
+    vkou.loadPlusNew();
     vkou.run();
 }

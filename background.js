@@ -12,10 +12,11 @@ topMenu.insertBefore(swapBackgroundButton, settingLink);
 // определяем переменные
 localStorage["newbg_css"] = chrome.extension.getURL('/newbg.css');
 localStorage["oldbg_css"] = chrome.extension.getURL('/oldbg.css');
-if (localStorage["extversion"] && localStorage["extversion"]<chrome.runtime.getManifest().version) {
+localStorage["extversion"] = chrome.runtime.getManifest().version;
+/*if (localStorage["extversion"] && localStorage["extversion"]<chrome.runtime.getManifest().version) {
 	localStorage["isNewV"] = true;
 	localStorage["extversion"] = chrome.runtime.getManifest().version;
-}
+}*/
 document.getElementsByTagName("body")[0].setAttribute("onload","onLoadVKnew()");
 
 // подгружаем скрипт
