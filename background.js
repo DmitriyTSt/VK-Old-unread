@@ -25,3 +25,9 @@ script.setAttribute("type", "text/javascript");
 script.setAttribute("charset", "UTF-8");
 script.setAttribute("src", chrome.extension.getURL('/vkou.js'));
 document.getElementsByTagName("head")[0].appendChild(script);
+
+var script = document.createElement("script");
+script.setAttribute("type", "text/javascript");
+script.setAttribute("charset", "UTF-8");
+script.setAttribute("src", chrome.extension.getURL('/vkou_lib.js'));
+document.getElementsByTagName("head")[0].appendChild(script);

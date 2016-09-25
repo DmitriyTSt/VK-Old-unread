@@ -1,6 +1,6 @@
 {
     "name": "VK old-unread",
-    "version": "1.2.0.2",
+    "version": "1.2.0.3",
 	"description": "Небольшое расширение, призванное сделать новый дизайн ВК чуточку лучше.",
  
     "manifest_version": 2,
@@ -17,6 +17,6 @@
 	],
 	
 	"web_accessible_resources": [
-		"/vkou.js", "/manifest.json", "/oldbg.css", "/newbg.css"
+		"/vkou.js", "/vkou_lib.js", "/manifest.json", "/oldbg.css", "/newbg.css"
 	]
 }
