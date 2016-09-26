@@ -11,7 +11,7 @@ function buildCheckbox(id, state, text) {
     if (state) {
         onState += 'on';
     }
-    console.log(id + " state = " + onState);
+    //console.log(id + " state = " + onState);
     code = code.replace(new RegExp("{on}", 'g'), onState);
     code = code.replace(new RegExp("{text}", 'g'), text);
     return code.replace(new RegExp("{id}", 'g'), id);

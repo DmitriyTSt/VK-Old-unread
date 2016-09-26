@@ -104,13 +104,7 @@ var vkou = {
             opt_flag[curopt] = optionList[curopt].flag;
         }
         localStorage.vkou_opt = JSON.stringify(opt_flag);
-        console.log("vkou flags of options have saved");
-    },
-    load: function() {
-        var oldOpt = JSON.parse(localStorage.vkou_opt);
-        for (var key in optionList) {
-            optionList[key].flag = oldOpt[key];
-        }
+        //console.log("vkou flags of options have saved");
     },
     update: function() {
         for (var curopt in optionList) {
@@ -124,10 +118,20 @@ var vkou = {
         optionList[id].flag = state;
         vkou.save();
         vkou.update();
+    },
+    init: function() {
+        // load
+        var oldOpt = JSON.parse(localStorage.vkou_opt);
+        for (var key in optionList) {
+            optionList[key].flag = oldOpt[key];
+        }
+        // upd
+        for (var curopt in optionList) {
+            if (optionList[curopt].flag) optionList[curopt].positive();
+            else optionList[curopt].negative();
+        }
+        console.log("init vkou");
     }
 };
 
-function onLoadVKnew() {
-    vkou.load();
-    vkou.update();
-}
+vkou.init();
