@@ -1,13 +1,13 @@
 /**
-    VK Old-unread 
-    Set of functions
-**/
+ VK Old-unread
+ Set of functions
+ **/
 "use strict"
 
 function buildCheckbox(id, state, text) {
-    var code = '<div class="checkbox {on}" id="vkou_opt_{id}" style="padding: 5px;" onclick="checkbox(this); vkou.setOpt(\'{id}\', isChecked(this));"><div class="vk_checkbox_caption">{text}</div></div>\
+    let code = '<div class="checkbox {on}" id="vkou_opt_{id}" style="padding: 5px;" onclick="checkbox(this); vkou.setOpt(\'{id}\', isChecked(this));"><div class="vk_checkbox_caption">{text}</div></div>\
     ';
-    var onState = '';
+    let onState = '';
     if (state) {
         onState += 'on';
     }
@@ -18,7 +18,7 @@ function buildCheckbox(id, state, text) {
 }
 
 function addcss(text, id) {
-    var style = document.createElement("style");
+    const style = document.createElement("style");
     style.type = "text/css";
     if (id) {
         style.setAttribute("id", id);
@@ -26,8 +26,9 @@ function addcss(text, id) {
     style.appendChild(document.createTextNode(text));
     document.getElementsByTagName("head")[0].appendChild(style);
 }
+
 function addcss_file(filename, id) {
-    var bgCss;
+    let bgCss;
     bgCss = document.getElementById(id);
     if (!bgCss) {
         bgCss = document.createElement("link");
@@ -40,9 +41,11 @@ function addcss_file(filename, id) {
         bgCss.setAttribute("href", filename);
     }
 }
+
 function delcss_file(id) {
     document.getElementsByTagName("head")[0].removeChild(document.getElementById(id));
 }
+
 function delcss(id) {
     if (document.getElementById(id) === null) {
         return;

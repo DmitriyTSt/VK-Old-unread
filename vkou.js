@@ -1,20 +1,20 @@
 "use strict";
-var title = "VK Old-unread";
-var v = localStorage.extversion;
+const title = "VK Old-unread";
+const v = localStorage.extversion;
 
-var optionList = {};
+const optionList = {};
 
-/** 
-    VK OU v1.2.0
-    Добавление опций
-    
-    optionList.%option_name% = {
-        flag -- параметр опции по-умолчанию
-        title -- имя, отображаемое в настройках
-        positive -- функция, выполняемая при включенной опции
-        negatie -- функция, выполняемая при отключенной опции
-    }
-**/
+/**
+ VK OU v1.2.0
+ Добавление опций
+
+ optionList.%option_name% = {
+ flag -- параметр опции по-умолчанию
+ title -- имя, отображаемое в настройках
+ positive -- функция, выполняемая при включенной опции
+ negatie -- функция, выполняемая при отключенной опции
+ }
+ **/
 
 optionList.oldbg = {
     flag: false,
@@ -23,7 +23,7 @@ optionList.oldbg = {
         addcss_file(localStorage.oldbg_css, "vk_ou_bg");
     },
     negative: function () {
-        addcss_file(localStorage.newbg_css, "vk_ou_bg");
+        delcss_file("vk_ou_bg");
     }
 };
 
@@ -83,11 +83,10 @@ optionList.answers = {
         if (document.getElementById("l_ans") !== null) {
             document.getElementById("side_bar_inner").getElementsByTagName('ol')[0].removeChild(document.getElementById("l_ans"));
         }
-            
     }
 };
 
-var vkou = {
+const vkou = {
     showOpt: function () {
         var curopt;
         var box = new MessageBox({title: title + " " + v, width: 660, hideButtons: true});
@@ -106,7 +105,7 @@ var vkou = {
         localStorage.vkou_opt = JSON.stringify(opt_flag);
         //console.log("vkou flags of options have saved");
     },
-    update: function() {
+    update: function () {
         for (var curopt in optionList) {
             if (optionList[curopt].flag) optionList[curopt].positive();
             else optionList[curopt].negative();
@@ -119,7 +118,7 @@ var vkou = {
         vkou.save();
         vkou.update();
     },
-    init: function() {
+    init: function () {
         // load
         var oldOpt = JSON.parse(localStorage.vkou_opt);
         for (var key in optionList) {

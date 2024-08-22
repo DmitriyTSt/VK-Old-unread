@@ -1,6 +1,9 @@
 body {
     background: #fff !important;
 }
+#page_header_wrap {
+    border-bottom: 1px solid #edeef0;
+}
 .im-page.im-page_classic .im-page--header-chat {
     border-top: solid 17px #fff !important;
     border-left: solid 1px #fff !important;
@@ -15,4 +18,23 @@ body {
     border-top: solid 15px #fff !important;
     border-left: solid 1px #fff !important;
     border-right: solid 1px #fff !important;
+}
+.vkui--sizeX-regular {
+    background: #fff !important;
+}
+.im-page_classic.im-page .im-page--header::before {
+    background: #fff !important;
+}
+.im-page_classic.im-page .im-page--chat-input::before {
+    background: #fff !important;
+}
+.im-page_classic .im-page--chat-header {
+    border: solid 1px #fff !important;
+    border-top-width: 16px !important;
+}
+.im-page_classic .im-page--chat-header-in::before {
+    background: #fff !important;
+}
+.im-page_classic.im-page .im-page--chat-body-wrap-inner {
+    border-bottom: 61px solid #fff !important;
 }
