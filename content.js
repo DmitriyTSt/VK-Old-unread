@@ -14,7 +14,8 @@ swapBackgroundButton.setAttribute("id", buttonId);
 swapBackgroundButton.setAttribute("onclick", "vkou.showOpt()");
 swapBackgroundButton.innerHTML = "<div class=\"vkuiSimpleCell__before\">" +
     "<span class=\"EcoPlate_itemIcon__Gryt6\">" +
-    "<svg aria-hidden=\"true\" display=\"block\" class=\"vkuiIcon vkuiIcon--20 vkuiIcon--w-20 vkuiIcon--h-20 vkuiIcon--gear_outline_20\" viewBox=\"0 0 20 20\" width=\"20\" height=\"20\" style=\"width: 20px; height: 20px;\">" +
+    "<svg aria-hidden=\"true\" display=\"block\" class=\"vkuiIcon vkuiIcon--20 vkuiIcon--w-20 vkuiIcon--h-20 " +
+    "vkuiIcon--gear_outline_20\" viewBox=\"0 0 20 20\" width=\"20\" height=\"20\" style=\"width: 20px; height: 20px;\">" +
     "<use xlink:href=\"#gear_outline_20\" style=\"fill: currentcolor;\"></use>" +
     "</svg>" +
     "</span>" +
@@ -37,7 +38,6 @@ swapBackgroundButton.addEventListener("mouseleave", () => {
 });
 
 // определяем переменные
-localStorage.newbg_css = chrome.runtime.getURL('/newbg.css');
 localStorage.oldbg_css = chrome.runtime.getURL('/oldbg.css');
 localStorage.extversion = chrome.runtime.getManifest().version;
 

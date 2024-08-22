@@ -11,9 +11,6 @@
       "matches": [
         "https://vk.com/*"
       ],
-      "css": [
-        "mystyles.css"
-      ],
       "js": [
         "content.js"
       ],
@@ -25,8 +22,7 @@
       "resources": [
         "/vkou.js",
         "/vkou_lib.js",
-        "/oldbg.css",
-        "/newbg.css"
+        "/oldbg.css"
       ],
       "matches": [
         "https://vk.com/*"
