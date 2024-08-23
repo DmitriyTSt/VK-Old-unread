@@ -5,7 +5,7 @@ const v = localStorage.extversion;
 const optionList = {};
 
 /**
- VK OU v1.2.0
+ VK OU v1.3.1
  Добавление опций
 
  optionList.%option_name% = {
@@ -20,10 +20,10 @@ optionList.oldbg = {
     flag: false,
     title: "Белый фон",
     positive: function () {
-        addcss_file(localStorage.oldbg_css, "vk_ou_bg");
+        addCssFile(localStorage.oldbg_css, "vk_ou_bg");
     },
     negative: function () {
-        delcss_file("vk_ou_bg");
+        delCssFile("vk_ou_bg");
     }
 };
 
@@ -31,39 +31,82 @@ optionList.adsdel = {
     flag: false,
     title: "Удаление рекламы",
     positive: function () {
-        addcss('#ads_left {\
+        addCss('#ads_left {\
 	           position: absolute !important;\
 	           left: -5000px !important;\
             }', "adsdel");
     },
     negative: function () {
-        delcss("adsdel");
+        delCss("adsdel");
     }
 };
 
+optionList.nativeAdsDel = {
+    flag: false,
+    title: "Удаление нативной рекламы в ленте",
+    observer: undefined,
+    positive: function () {
+        if (this.observer) {
+            unregisterMutationObserver(this.observer);
+        }
+        this.observer = registerMutationObserver(() => {
+            this.processNativeAds("none");
+        });
+        console.log("vkou nativeAdsDel enabled");
+        this.processNativeAds("none");
+    },
+    negative: function () {
+        if (this.observer) {
+            unregisterMutationObserver(this.observer);
+        }
+        console.log("vkou nativeAdsDel disabled");
+        this.processNativeAds("");
+    },
+    processNativeAds: function (displayValue) {
+        [
+            ".ads_light_container.post",
+            ".post_top_info_ads_group_members",
+            ".post.adaptive_ad",
+            "._ads_block_data_w"
+        ].forEach((selectors) => {
+            document.querySelectorAll(selectors)
+                .forEach((item) => this.processAdInnerNode(item, displayValue));
+        })
+    },
+    processAdInnerNode: function (node, displayValue) {
+        let rowItem = node;
+        while (rowItem && !rowItem.classList.contains("feed_row")) {
+            rowItem = rowItem.parentElement;
+        }
+        if (rowItem && rowItem.style.display !== displayValue) {
+            console.log(`vkou nativeAdsDel row current ${displayValue}`);
+            rowItem.style.display = displayValue;
+        }
+    }
+}
+
 const vkou = {
     showOpt: function () {
-        var curopt;
-        var box = new MessageBox({title: title + " " + v, width: 660, hideButtons: true});
-        var html = "";
-        for (curopt in optionList) {
-            html += buildCheckbox(curopt, optionList[curopt].flag, optionList[curopt].title);
+        const box = new MessageBox({title: title + " " + v, width: 660, hideButtons: true});
+        let html = "";
+        for (const optionKey in optionList) {
+            html += buildVkOuSettingCheckbox(optionKey, optionList[optionKey].flag, optionList[optionKey].title);
         }
         box.content(html);
         box.show();
     },
     save: function () {
-        var opt_flag = {};
-        for (var curopt in optionList) {
-            opt_flag[curopt] = optionList[curopt].flag;
+        const optionFlag = {};
+        for (const optionKey in optionList) {
+            optionFlag[optionKey] = optionList[optionKey].flag;
         }
-        localStorage.vkou_opt = JSON.stringify(opt_flag);
+        localStorage.vkou_opt = JSON.stringify(optionFlag);
         //console.log("vkou flags of options have saved");
     },
     update: function () {
-        for (var curopt in optionList) {
-            if (optionList[curopt].flag) optionList[curopt].positive();
-            else optionList[curopt].negative();
+        for (const optionKey in optionList) {
+            if (optionList[optionKey].flag) optionList[optionKey].positive();
+            else optionList[optionKey].negative();
         }
         console.log("vkou updated");
     },
@@ -75,14 +118,14 @@ const vkou = {
     },
     init: function () {
         // load
-        var oldOpt = JSON.parse(localStorage.vkou_opt);
-        for (var key in optionList) {
-            optionList[key].flag = oldOpt[key];
+        const oldOpt = JSON.parse(localStorage.vkou_opt);
+        for (const optionKey in optionList) {
+            optionList[optionKey].flag = oldOpt[optionKey];
         }
         // upd
-        for (var curopt in optionList) {
-            if (optionList[curopt].flag) optionList[curopt].positive();
-            else optionList[curopt].negative();
+        for (const optionKey in optionList) {
+            if (optionList[optionKey].flag) optionList[optionKey].positive();
+            else optionList[optionKey].negative();
         }
         console.log("init vkou");
     }
