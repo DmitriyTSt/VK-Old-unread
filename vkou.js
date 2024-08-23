@@ -1,6 +1,6 @@
 "use strict";
 const title = "VK Old-unread";
-const v = localStorage.extversion;
+const v = localStorage.vkou_version;
 
 const optionList = {};
 
@@ -20,7 +20,7 @@ optionList.oldbg = {
     flag: false,
     title: "Белый фон",
     positive: function () {
-        addCssFile(localStorage.oldbg_css, "vk_ou_bg");
+        addCssFile(localStorage.vkou_oldbg_css, "vk_ou_bg");
     },
     negative: function () {
         delCssFile("vk_ou_bg");

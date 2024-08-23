@@ -38,8 +38,8 @@ swapBackgroundButton.addEventListener("mouseleave", () => {
 });
 
 // определяем переменные
-localStorage.oldbg_css = chrome.runtime.getURL('/oldbg.css');
-localStorage.extversion = chrome.runtime.getManifest().version;
+localStorage.vkou_oldbg_css = chrome.runtime.getURL('/oldbg.css');
+localStorage.vkou_version = chrome.runtime.getManifest().version;
 
 // подгружаем функции
 let scriptOuLib = document.createElement("script");
